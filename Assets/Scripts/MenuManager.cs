@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PauseMenu : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     [SerializeField] private InputActionProperty _secondaryButtonAction;
     [SerializeField] private GameObject _pauseMenuUI;
@@ -25,4 +26,9 @@ public class PauseMenu : MonoBehaviour
         _pauseMenuUI.SetActive(_isPaused);
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+        EditorApplication.isPlaying = false;
+    }
 }

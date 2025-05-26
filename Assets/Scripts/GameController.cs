@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _scoreSound;
     [SerializeField] private AudioClip _errorSound;
-    
+
     [Header("Waste Prefabs")]
     [SerializeField] private Transform _spawnPoint;
     [SerializeField] private GameObject[] _packagingWaste;
@@ -59,4 +59,16 @@ public class GameController : MonoBehaviour
         _errorText.text = "Total errors : " + _globalErrorCount;
         _audioSource.PlayOneShot(_errorSound);
     }
+
+    public int getGlobalScore()
+    {
+        return _globalScore;
+    }
+
+    public int getGlobalErrorCount()
+    {
+        return _globalErrorCount;
+    }
+    
+    
 }

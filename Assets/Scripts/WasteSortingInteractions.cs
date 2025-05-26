@@ -14,7 +14,6 @@ public class WasteSortingInteractions : MonoBehaviour
     private GameController _gameControllerScript;
     [SerializeField] private string _tagField;
     [SerializeField] private TextMeshProUGUI _scoreText;
-    [SerializeField] private TextMeshProUGUI _errorText;
     [SerializeField] private ParticleSystem _particle;
 
     private void Start()
@@ -56,6 +55,15 @@ public class WasteSortingInteractions : MonoBehaviour
     public void addError(int points)
     {
         _errorCount += points;
-        _errorText.text = "Errors : " + _errorCount;
+    }
+
+    public int getScore()
+    {
+        return _score;
+    }
+    
+    public int getErrorCount()
+    {
+        return _errorCount;
     }
 }
