@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private InputActionProperty _secondaryButtonAction;
     [SerializeField] private GameObject _pauseMenuUI;
     private bool _isPaused = false;
+    
 
     private void OnEnable()
     {
