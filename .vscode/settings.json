@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "WasteSortingSimulator.sln"
+    "dotnet.defaultSolution": "waste_sorting_simulator.sln"
 }

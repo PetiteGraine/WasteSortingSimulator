@@ -1,22 +1,22 @@
 using UnityEngine;
 
-public class BillboardCanvas : MonoBehaviour
+public class BillboardCanvasController : MonoBehaviour
 {
-    public Camera targetCamera;
+    private Camera _targetCamera;
 
     private void Start()
     {
-        if (targetCamera == null)
+        if (_targetCamera == null)
         {
-            targetCamera = Camera.main;
+            _targetCamera = Camera.main;
         }
     }
 
     private void LateUpdate()
     {
-        Vector3 targetPosition = targetCamera.transform.position;
+        Vector3 targetPosition = _targetCamera.transform.position;
         Vector3 direction = targetPosition - transform.position;
-        direction.y = 0; // Ignore vertical difference
+        direction.y = 0;
         if (direction.sqrMagnitude > 0.001f)
         {
             transform.rotation = Quaternion.LookRotation(-direction);

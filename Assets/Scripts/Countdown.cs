@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Countdown : MonoBehaviour
 {
     [Header("Timer Settings")]
-    [SerializeField] private float _totalTime = 30f;
+    [SerializeField] private float _totalTime = 60f;
     private bool _isCountdownTimerOn = false;
 
     [Header("UI Elements")]
@@ -27,7 +27,7 @@ public class Countdown : MonoBehaviour
 
     public void BeginTimer()
     {
-        bool haveToStartCoroutine = _countdownTime == 0;
+        bool haveToStartCoroutine = _countdownTime <= 0;
         _countdownTime = _totalTime;
         _timerText.text = "Timer : " + _countdownTime.ToString("F2");
         _isCountdownTimerOn = true;

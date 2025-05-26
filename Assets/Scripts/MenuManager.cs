@@ -39,7 +39,7 @@ public class MenuManager : MonoBehaviour
 
     private bool _isPaused = false;
     private GameObject _player;
-    private bool _arrowsActive = false;
+    private bool _arrowsActive = true;
     private Countdown _countdownScript;
 
     private void Start()
@@ -94,7 +94,6 @@ public class MenuManager : MonoBehaviour
     public void ToggleArrows()
     {
         _arrowsActive = !_arrowsActive;
-        _arrows.gameObject.SetActive(_arrowsActive);
         if (_arrowsActive)
         {
             _arrows.text = "Arrows ON";
@@ -102,6 +101,20 @@ public class MenuManager : MonoBehaviour
         else
         {
             _arrows.text = "Arrows OFF";
+            DestroAllArrows();
+        }
+    }
+
+    public bool AreArrowsActive()
+    {
+        return _arrowsActive;
+    }
+
+    private void DestroAllArrows()
+    {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Arrow"))
+        {
+            Destroy(obj);
         }
     }
 

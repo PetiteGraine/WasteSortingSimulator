@@ -9,6 +9,7 @@ TagManager:
   - Glass
   - Trashbin
   - Waste
+  - Arrow
   layers:
   - Default
   - TransparentFX

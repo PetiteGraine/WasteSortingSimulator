@@ -33,10 +33,13 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject[] _packagingWaste;
     [SerializeField] private GameObject[] _foodWaste;
     [SerializeField] private GameObject[] _glassWaste;
+    [SerializeField] private GameObject _arrowPrefab;
+    private GameObject _player;
 
     private void Start()
     {
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        _player = GameObject.FindGameObjectWithTag("Player");
         _countdownScript = gameController.GetComponent<Countdown>();
         _menuManagerScript = gameController.GetComponent<MenuManager>();
         SpawnWaste();
@@ -63,7 +66,13 @@ public class GameController : MonoBehaviour
 
         int randomIndex = Random.Range(0, wastes.Length);
         GameObject wasteToSpawn = wastes[randomIndex];
-        Instantiate(wasteToSpawn, new Vector3(spawnPoint.position.x, spawnPoint.position.y + 0.5f, spawnPoint.position.z), Quaternion.identity);
+        GameObject waste = Instantiate(wasteToSpawn, new Vector3(spawnPoint.position.x, spawnPoint.position.y + 0.5f, spawnPoint.position.z), Quaternion.identity);
+        if (_menuManagerScript.AreArrowsActive())
+        {
+            Instantiate(_arrowPrefab, new Vector3(_player.transform.position.x, 0.001f, _player.transform.position.z), Quaternion.identity)
+            .GetComponent<RotateArrowTowardWaste>().SetWaste(waste);
+        }
+        
     }
 
     public void GameOver()

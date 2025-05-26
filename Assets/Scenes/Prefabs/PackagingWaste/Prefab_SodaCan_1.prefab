@@ -269,7 +269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28211ad467432284587842c5c46b0bec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetCamera: {fileID: 0}
 --- !u!1 &7148930832231400572
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +567,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 46165275197638786}
+    - targetCorrespondingSourceObject: {fileID: 9129409638069750456, guid: b2c7c7fec6cc48742a63c4ef8e7cf203,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4521684276946746670}
   m_SourcePrefab: {fileID: 100100000, guid: b2c7c7fec6cc48742a63c4ef8e7cf203, type: 3}
 --- !u!4 &1476214556341853059 stripped
 Transform:
@@ -781,6 +784,19 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &4521684276946746670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7873424225176254160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64f2cfcd5df47d946997b0771f3e02ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _canvasToToggle: {fileID: 6376541958378428900}
 --- !u!4 &8419379714308976175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7431375969144607303, guid: b2c7c7fec6cc48742a63c4ef8e7cf203,

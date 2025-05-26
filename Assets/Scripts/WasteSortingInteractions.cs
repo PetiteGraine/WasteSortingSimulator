@@ -36,6 +36,7 @@ public class WasteSortingInteractions : MonoBehaviour
         else
         {
             addScore(-1);
+            _gameControllerScript.addScore(-1);
             addError(1);
             _gameControllerScript.addError(1);
             var main = _particle.main;
