@@ -35,6 +35,7 @@ public class WasteSortingInteractions : MonoBehaviour
 
         else
         {
+            addScore(-1);
             addError(1);
             _gameControllerScript.addError(1);
             var main = _particle.main;
@@ -61,9 +62,16 @@ public class WasteSortingInteractions : MonoBehaviour
     {
         return _score;
     }
-    
+
     public int getErrorCount()
     {
         return _errorCount;
+    }
+
+    public void ResetStats()
+    {
+        _score = 0;
+        _errorCount = 0;
+        _scoreText.text = "Score : " + _score;   
     }
 }

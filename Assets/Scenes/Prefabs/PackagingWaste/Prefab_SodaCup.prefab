@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2827875852720913058}
   - component: {fileID: 8488472962115140304}
   - component: {fileID: 4187551282258904831}
+  - component: {fileID: 5702673596969369723}
   m_Layer: 0
   m_Name: Canvas - Text
   m_TagString: Untagged
@@ -122,6 +123,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RaycastTriggerInteraction: 1
+--- !u!114 &5702673596969369723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5090192904187307078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28211ad467432284587842c5c46b0bec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetCamera: {fileID: 0}
 --- !u!1 &5291729976599543850
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +233,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Food waste
+  m_text: Packaging waste
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
