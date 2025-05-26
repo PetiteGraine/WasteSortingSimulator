@@ -8,6 +8,7 @@ TagManager:
   - Food
   - Glass
   - Trashbin
+  - Waste
   layers:
   - Default
   - TransparentFX

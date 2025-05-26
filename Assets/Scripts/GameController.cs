@@ -39,7 +39,6 @@ public class GameController : MonoBehaviour
         GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
         _countdownScript = gameController.GetComponent<Countdown>();
         _menuManagerScript = gameController.GetComponent<MenuManager>();
-        ResetStats();
         SpawnWaste();
     }
 
@@ -49,7 +48,6 @@ public class GameController : MonoBehaviour
         int randomWasteType = Random.Range(0, 3);
         GameObject[] wastes = null;
         Transform spawnPoint = _spawns[Random.Range(0, _spawns.Length)];
-        spawnPoint.position = new Vector3(spawnPoint.position.x, spawnPoint.position.y + 0.5f, spawnPoint.position.z);
         switch (randomWasteType)
         {
             case 0:
@@ -65,28 +63,35 @@ public class GameController : MonoBehaviour
 
         int randomIndex = Random.Range(0, wastes.Length);
         GameObject wasteToSpawn = wastes[randomIndex];
-        Instantiate(wasteToSpawn, spawnPoint.position, Quaternion.identity);
+        Instantiate(wasteToSpawn, new Vector3(spawnPoint.position.x, spawnPoint.position.y + 0.5f, spawnPoint.position.z), Quaternion.identity);
     }
 
     public void GameOver()
     {
         _isGameOver = true;
+        _menuManagerScript.DisplayScoreDetails();
+        DestroyAllWaste();
+    }
+
+    private void DestroyAllWaste()
+    {
         foreach (GameObject obj in GameObject.FindObjectsOfType<GameObject>())
         {
-            if (obj.transform.parent == null && obj.layer == LayerMask.NameToLayer("Waste"))
+            if (obj.CompareTag("Untagged")) continue;
+            if (obj.tag == "Waste")
             {
-                Destroy(obj);
+                Destroy(obj.gameObject);
             }
         }
     }
 
     public void StartGame()
     {
+        DestroyAllWaste();
         _isGameOver = false;
-        _countdownScript.StopTimer();
-        _countdownScript.BeginTimer();
         ResetStats();
-        _menuManagerScript.DisplayScoreDetails();
+        SpawnWaste();
+        _countdownScript.BeginTimer();
     }
 
     private void ResetStats()

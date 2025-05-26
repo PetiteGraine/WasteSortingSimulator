@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 2972946247079476389}
   m_Layer: 0
   m_Name: Prefab_egg_cracked1
-  m_TagString: Untagged
+  m_TagString: Waste
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

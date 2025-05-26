@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _MenuCanvas;
     [SerializeField] private GameObject _OptionsPanel;
     [SerializeField] private GameObject _ScoreDetailsPanel;
+    [SerializeField] private TextMeshProUGUI _arrows;
 
     [Header("Trashbins")]
     [SerializeField] private WasteSortingInteractions _packagingTrashbin;
@@ -34,13 +35,17 @@ public class MenuManager : MonoBehaviour
     [Header("Total Texts")]
     [SerializeField] private TextMeshProUGUI _totalScoreText;
     [SerializeField] private TextMeshProUGUI _totalErrorText;
+    [SerializeField] private TextMeshProUGUI _averageScoreText;
 
     private bool _isPaused = false;
     private GameObject _player;
+    private bool _arrowsActive = false;
+    private Countdown _countdownScript;
 
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        _countdownScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<Countdown>();
         _MenuCanvas.SetActive(false);
     }
 
@@ -73,14 +78,31 @@ public class MenuManager : MonoBehaviour
 
     public void ScoreDetailsUpdate()
     {
-        _packagingScoreText.text = "Score: " + _packagingTrashbin.getScore();
-        _glassScoreText.text = "Score: " + _glassTrashbin.getScore();
-        _foodScoreText.text = "Score: " + _foodTrashbin.getScore();
-        _packagingErrorText.text = "Errors: " + _packagingTrashbin.getErrorCount();
-        _glassErrorText.text = "Errors: " + _glassTrashbin.getErrorCount();
-        _foodErrorText.text = "Errors: " + _foodTrashbin.getErrorCount();
-        _totalScoreText.text = "Total Score: " + (_packagingTrashbin.getScore() + _glassTrashbin.getScore() + _foodTrashbin.getScore());
-        _totalErrorText.text = "Total Errors: " + (_packagingTrashbin.getErrorCount() + _glassTrashbin.getErrorCount() + _foodTrashbin.getErrorCount());
+        float totalScore = _packagingTrashbin.getScore() + _glassTrashbin.getScore() + _foodTrashbin.getScore();
+        float totalErrors = _packagingTrashbin.getErrorCount() + _glassTrashbin.getErrorCount() + _foodTrashbin.getErrorCount();
+        _packagingScoreText.text = "Score : " + _packagingTrashbin.getScore();
+        _glassScoreText.text = "Score : " + _glassTrashbin.getScore();
+        _foodScoreText.text = "Score : " + _foodTrashbin.getScore();
+        _packagingErrorText.text = "Errors : " + _packagingTrashbin.getErrorCount();
+        _glassErrorText.text = "Errors : " + _glassTrashbin.getErrorCount();
+        _foodErrorText.text = "Errors : " + _foodTrashbin.getErrorCount();
+        _totalScoreText.text = "Total Score : " + totalScore;
+        _totalErrorText.text = "Total Errors : " + totalErrors;
+        _averageScoreText.text = "Score/sc : " + (totalScore / _countdownScript.GetCountdownTotalTime()).ToString("F2");
+    }
+
+    public void ToggleArrows()
+    {
+        _arrowsActive = !_arrowsActive;
+        _arrows.gameObject.SetActive(_arrowsActive);
+        if (_arrowsActive)
+        {
+            _arrows.text = "Arrows ON";
+        }
+        else
+        {
+            _arrows.text = "Arrows OFF";
+        }
     }
 
     public void QuitGame()
