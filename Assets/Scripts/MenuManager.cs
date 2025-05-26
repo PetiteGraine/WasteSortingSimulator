@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _pauseMenuUI;
     private bool _isPaused = false;
 
+
     private void OnEnable()
     {
         _secondaryButtonAction.action.performed += OnPauseButtonPressed;
